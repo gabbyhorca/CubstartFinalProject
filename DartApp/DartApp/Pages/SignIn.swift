@@ -24,7 +24,7 @@ struct SignIn: View{
            
            Text("Username")
                .multilineTextAlignment(.leading)
-               .font(.body)
+               .font(.system(size: 19))
                .frame(maxWidth: 300, alignment: .leading)
            
            TextField("Username", text: $email)
@@ -40,7 +40,7 @@ struct SignIn: View{
 
            Text("Password")
                .multilineTextAlignment(.leading)
-               .font(.body)
+               .font(.system(size: 19))
                .frame(maxWidth: 300, alignment: .leading)
            
            HStack {
@@ -52,7 +52,6 @@ struct SignIn: View{
                    .frame(maxWidth: 300, alignment: .leading)
                    .disableAutocorrection(true)
                    .autocapitalization(.none)
-//               Image(systemName: "arrow.left.to.line")
                
            }
            Button("Forgot Password?") {
@@ -63,13 +62,16 @@ struct SignIn: View{
            .frame(maxWidth: 300, alignment: .trailing)
            .font(.system(size: 13))
            
+           
            HStack {
                Button("Log In") {
                    loggedIn.toggle()
                }
-               .frame(height: 100)
+               .frame(height: 100, alignment: .center)
                .buttonStyle(.bordered).tint(.blue)
                .toggleStyle(.button)
+               .font(.system(size: 21))
+
                Image(systemName: "arrow.right")
            }
            
@@ -80,6 +82,7 @@ struct SignIn: View{
                    signUp.toggle()
                }
            }
+           Spacer()
        }
     }
 }
