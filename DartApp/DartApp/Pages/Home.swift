@@ -26,7 +26,6 @@ struct Home: View{
                        .frame(width: 70, height: 70, alignment: .topLeading)
                    Spacer()
                }
-               
            }
            RoundedRectangle(cornerRadius: 5)
                    .frame(width: 50, height: 8)
