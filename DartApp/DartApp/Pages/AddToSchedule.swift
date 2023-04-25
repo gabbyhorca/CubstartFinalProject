@@ -12,6 +12,7 @@ struct AddToSchedule: View{
     @State var name = ""
     @State var day = ""
     @State var time = ""
+    
     var body: some View {
         VStack {
             HStack {
@@ -21,7 +22,7 @@ struct AddToSchedule: View{
                     .padding(.leading, 20)
                     .scaledToFit()
                 Text("Back")
-                    .font(.system(size: 18))
+                    .font(.system(size: 19))
                 
                 Spacer()
             }
@@ -32,6 +33,7 @@ struct AddToSchedule: View{
                 .padding(.leading, 35)
                 .font(.system(size: 25, weight: .regular, design: .default))
                 .frame(maxWidth: .infinity, alignment: .topLeading)
+                .padding(.top, 20)
             
             HStack {
                 Text("Name")
@@ -97,7 +99,6 @@ struct AddToSchedule: View{
             ZStack {
                 Image(systemName: "plus")
                 
-                //                   .padding(.top, 90)
                     .aspectRatio(contentMode: .fill)
                     .padding(10)
                     .padding([.leading, .trailing], 30)
@@ -111,6 +112,7 @@ struct AddToSchedule: View{
                 .font(.system(size: 15))
             Spacer()
         }
+
     }
 }
 
