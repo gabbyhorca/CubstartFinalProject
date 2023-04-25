@@ -18,6 +18,7 @@
 		043DDB8B29F75AE700B90A95 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043DDB8A29F75AE700B90A95 /* Profile.swift */; };
 		043DDB8D29F75AF700B90A95 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043DDB8C29F75AF700B90A95 /* Schedule.swift */; };
 		043DDB8F29F75B0300B90A95 /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043DDB8E29F75B0300B90A95 /* SignIn.swift */; };
+		043DDB9129F75DEF00B90A95 /* AddToSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043DDB9029F75DEF00B90A95 /* AddToSchedule.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		043DDB8A29F75AE700B90A95 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		043DDB8C29F75AF700B90A95 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		043DDB8E29F75B0300B90A95 /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
+		043DDB9029F75DEF00B90A95 /* AddToSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToSchedule.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +145,7 @@
 				043DDB8A29F75AE700B90A95 /* Profile.swift */,
 				043DDB8C29F75AF700B90A95 /* Schedule.swift */,
 				043DDB8E29F75B0300B90A95 /* SignIn.swift */,
+				043DDB9029F75DEF00B90A95 /* AddToSchedule.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				043DDB6029F75A1900B90A95 /* ContentView.swift in Sources */,
+				043DDB9129F75DEF00B90A95 /* AddToSchedule.swift in Sources */,
 				043DDB8F29F75B0300B90A95 /* SignIn.swift in Sources */,
 				043DDB8B29F75AE700B90A95 /* Profile.swift in Sources */,
 				043DDB8929F75ADB00B90A95 /* Home.swift in Sources */,
