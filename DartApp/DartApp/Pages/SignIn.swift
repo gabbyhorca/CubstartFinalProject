@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 struct SignIn: View {
-    @Binding var navPath = NavigationPath
     
     @State var email = ""
     @State var password = ""

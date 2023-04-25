@@ -10,7 +10,6 @@ import Foundation
 import SwiftUI
 
 struct Schedule: View {
-    @Binding var navPath: NavigationPath
     
     @State var tripList: [Trip] = []
     
@@ -27,9 +26,11 @@ struct Schedule: View {
         NavigationView{
             VStack {
                 HStack{
-                    NavigationLink(destination: Home()) {
+                    NavigationLink {
+                        Home()
+                    } label: {
                         Button(action: {
-                            navPath.append("home")
+                            
                         }, label: {
                             HStack {
                                 Image("backArrow")
@@ -92,7 +93,7 @@ struct Schedule: View {
                 }
             }.onAppear(perform: addTripListItems)
                 .padding()
-        }.navigationTitle("schedule")
+        }
     }
 }
 

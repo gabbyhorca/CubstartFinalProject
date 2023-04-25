@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 struct Profile: View{
-    @Binding var navPath = NavigationPath
     
    var body: some View {
       VStack {

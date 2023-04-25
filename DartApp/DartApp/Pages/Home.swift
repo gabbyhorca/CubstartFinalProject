@@ -11,11 +11,10 @@ import Foundation
 import SwiftUI
 
 struct Home: View {
-    @State var navPath = NavigationPath()
     
     @State private var showingSheet1 = true
     var body: some View {
-        NavigationStack{
+        NavigationStack(){
             Group {
                 ZStack {
                     Image("map")
@@ -42,74 +41,79 @@ struct Home: View {
                     
                 }, label: {
                 }).sheet(isPresented: $showingSheet1) {
-                    Sheet1($navPath)
+                    Sheet1()
                     .presentationDetents([.height(220), .medium, .large]) }
                 
             }
-        }.navigationTitle("home")
+            NavigationLink {
+                Schedule()
+            } label: {
+                Text("Go to Schedule")
+            }
+        }
     }
 }
 
 
 struct Sheet1: View {
-   @Binding var navPath = NavigationPath
-   @State var location = "Naya"
-   //This code allows us to call the dismiss() function which closes the sheet view
-   @Environment(\.dismiss) var dismiss
-   
-   var body: some View {
-      Group {
-         VStack {
-            
-         TextField("Add a location", text: $location)
-             .multilineTextAlignment(.leading)
-             .frame(maxWidth: 290, alignment: .leading)
-             .disableAutocorrection(true)
-             .autocapitalization(.none)
-             .frame(height: 20)
-             .padding(5)
-             .padding([.leading, .trailing], 17)
-             .padding([.bottom, .top], 3)
-             .background(.gray.opacity(0.2))
-             .cornerRadius(19)
-            
-               Text("Results")
-                  .foregroundColor(.black)
-                  .padding(.trailing, 250)
-                  .padding(3)
-            
-            //button should lead to results page
-            Button("Naya Resto") {
-               
+    @State var location = "Naya"
+    //This code allows us to call the dismiss() function which closes the sheet view
+    @Environment(\.dismiss) var dismiss
+    
+    var body: some View {
+        Group {
+            VStack {
+                
+                TextField("Add a location", text: $location)
+                    .multilineTextAlignment(.leading)
+                    .frame(maxWidth: 290, alignment: .leading)
+                    .disableAutocorrection(true)
+                    .autocapitalization(.none)
+                    .frame(height: 20)
+                    .padding(5)
+                    .padding([.leading, .trailing], 17)
+                    .padding([.bottom, .top], 3)
+                    .background(.gray.opacity(0.2))
+                    .cornerRadius(19)
+                
+                Text("Results")
+                    .foregroundColor(.black)
+                    .padding(.trailing, 250)
+                    .padding(3)
+                
+                //button should lead to results page
+                Button("Naya Resto") {
+                    
+                }
+                .foregroundColor(.black)
+                .padding(.trailing, 200)
             }
-            .foregroundColor(.black)
-            .padding(.trailing, 200)
-         }
-         
-
-      Spacer()
-      
-          HStack {
-              Button(action: {
-                  navPath.append("schedule")
-              },label: {
-                  Image(systemName: "list.bullet.below.rectangle")
-                      .resizable()
-                      .frame(width: 45, height: 45, alignment: .bottomLeading)
-                      .aspectRatio(contentMode: .fill)
-                      .padding(20)
-                      .cornerRadius(50)
-                      .background(.gray.opacity(0.2))
-                      .scaledToFit()
-                      .padding([.leading, .trailing], 30)
-                      .clipShape(Circle())
-                  Spacer()
-              })
-              .interactiveDismissDisabled()
-              .padding().foregroundColor(.blue)
-          }
-   
-      }
+            
+            
+            Spacer()
+            
+            HStack {
+                Button(action: {
+                },label: {
+                    Image(systemName: "list.bullet.below.rectangle")
+                        .resizable()
+                        .frame(width: 45, height: 45, alignment: .bottomLeading)
+                        .aspectRatio(contentMode: .fill)
+                        .padding(20)
+                        .cornerRadius(50)
+                        .background(.gray.opacity(0.2))
+                        .scaledToFit()
+                        .padding([.leading, .trailing], 30)
+                        .clipShape(Circle())
+                    Spacer()
+                })
+                .interactiveDismissDisabled()
+                .padding().foregroundColor(.blue)
+            }
+            
+        }
+    }
+}
 
 struct Home_Previews: PreviewProvider {
    static var previews: some View {
