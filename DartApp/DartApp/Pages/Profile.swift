@@ -112,6 +112,7 @@ struct Profile: View{
                .black
                .frame(width: 350, height: 1 / UIScreen.main.scale)
                .multilineTextAlignment(.leading)
+            
             HStack {
                Spacer()
                Button(action: {
