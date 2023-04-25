@@ -8,11 +8,10 @@
 import Foundation
 import SwiftUI
 
-struct AddToSchedule: View{
+struct AddToSchedule: View {
+    
     var body: some View {
-       VStack {
-          Text("Hi")
-       }
+        Text("hi")
     }
 }
 

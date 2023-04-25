@@ -11,7 +11,7 @@ import SwiftUI
 struct DartAppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            Schedule()
         }
     }
 }
