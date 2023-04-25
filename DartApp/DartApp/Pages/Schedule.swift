@@ -10,6 +10,8 @@ import Foundation
 import SwiftUI
 
 struct Schedule: View {
+    @Binding var navPath: NavigationPath
+    
     @State var tripList: [Trip] = []
     
     @StateObject var dummyt1 : Trip = Trip(name: "Test Trip 1", time: "3:00", date: "5/11/23", trainLine: "Red", tripStart: "Downtown Berkeley", tripDestination: "Embarcadero")
@@ -22,36 +24,40 @@ struct Schedule: View {
     }
     
     var body: some View {
-        VStack {
-            HStack{
-                Button(action: {
-                }, label: {
-                    HStack {
-                        Image("backArrow")
-                            .resizable()
-                            .scaledToFit()
-                            .cornerRadius(50)
-                            .frame(width: 20, height: 20)
-                        Text("Back").foregroundColor(.black)
+        NavigationView{
+            VStack {
+                HStack{
+                    NavigationLink(destination: Home()) {
+                        Button(action: {
+                            navPath.append("home")
+                        }, label: {
+                            HStack {
+                                Image("backArrow")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .cornerRadius(50)
+                                    .frame(width: 20, height: 20)
+                                Text("Back").foregroundColor(.black)
+                            }
+                        })
                     }
-                })
-                Spacer()
-            }
-            VStack{
-                HStack {
-                    
-                    Text("Current Schedule")
-                        .padding(.top, 20)
-                        .font(.system(size: 24, weight: .light, design: .default))
                     Spacer()
                 }
-                Color
-                    .black
-                    .frame(width: 350, height: 5 / UIScreen.main.scale)
-                    .multilineTextAlignment(.leading)
-                    .padding(-10)
-                
-                ScrollView {
+                VStack{
+                    HStack {
+                        
+                        Text("Current Schedule")
+                            .padding(.top, 20)
+                            .font(.system(size: 24, weight: .light, design: .default))
+                        Spacer()
+                    }
+                    Color
+                        .black
+                        .frame(width: 350, height: 5 / UIScreen.main.scale)
+                        .multilineTextAlignment(.leading)
+                        .padding(-10)
+                    
+                    ScrollView {
                         VStack(alignment: .leading) {
                             ForEach(tripList) {i in
                                 VStack{
@@ -74,18 +80,19 @@ struct Schedule: View {
                                         Spacer()
                                     }
                                     Color
-                                                   .gray
-                                                   .frame(width: 350, height: 1 / UIScreen.main.scale)
-                                                   .multilineTextAlignment(.leading)
+                                        .gray
+                                        .frame(width: 350, height: 1 / UIScreen.main.scale)
+                                        .multilineTextAlignment(.leading)
                                     Spacer()
                                 }
                             }
                         }
                     }
-                Spacer()
-            }
-        }.onAppear(perform: addTripListItems)
-            .padding()
+                    Spacer()
+                }
+            }.onAppear(perform: addTripListItems)
+                .padding()
+        }.navigationTitle("schedule")
     }
 }
 

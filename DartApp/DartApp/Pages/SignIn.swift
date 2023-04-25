@@ -8,7 +8,9 @@
 import Foundation
 import SwiftUI
 
-struct SignIn: View{
+struct SignIn: View {
+    @Binding var navPath = NavigationPath
+    
     @State var email = ""
     @State var password = ""
     @State var loggedIn = false
