@@ -11,7 +11,7 @@ import SwiftUI
 struct Profile: View{
     var body: some View {
        VStack {
-          Text("Hi")
+          Image("oski").resizable().scaledToFit().cornerRadius(50).frame(width: 70.0, height: 70.0).clipShape(Circle())
        }
     }
 }
