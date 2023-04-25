@@ -19,6 +19,8 @@
 		043DDB8D29F75AF700B90A95 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043DDB8C29F75AF700B90A95 /* Schedule.swift */; };
 		043DDB8F29F75B0300B90A95 /* SignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043DDB8E29F75B0300B90A95 /* SignIn.swift */; };
 		043DDB9129F75DEF00B90A95 /* AddToSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043DDB9029F75DEF00B90A95 /* AddToSchedule.swift */; };
+		906132ED29F7624C00AA476E /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906132EC29F7624C00AA476E /* Trip.swift */; };
+		973EC1E529F7955300C185BA /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 973EC1E429F7955300C185BA /* Result.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,8 @@
 		043DDB8C29F75AF700B90A95 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		043DDB8E29F75B0300B90A95 /* SignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignIn.swift; sourceTree = "<group>"; };
 		043DDB9029F75DEF00B90A95 /* AddToSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToSchedule.swift; sourceTree = "<group>"; };
+		906132EC29F7624C00AA476E /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		973EC1E429F7955300C185BA /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +108,7 @@
 		043DDB5C29F75A1900B90A95 /* DartApp */ = {
 			isa = PBXGroup;
 			children = (
+				906132EB29F7623700AA476E /* Classes */,
 				043DDB8729F75AC700B90A95 /* Pages */,
 				043DDB5D29F75A1900B90A95 /* DartAppApp.swift */,
 				043DDB5F29F75A1900B90A95 /* ContentView.swift */,
@@ -146,8 +151,17 @@
 				043DDB8C29F75AF700B90A95 /* Schedule.swift */,
 				043DDB8E29F75B0300B90A95 /* SignIn.swift */,
 				043DDB9029F75DEF00B90A95 /* AddToSchedule.swift */,
+				973EC1E429F7955300C185BA /* Result.swift */,
 			);
 			path = Pages;
+			sourceTree = "<group>";
+		};
+		906132EB29F7623700AA476E /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				906132EC29F7624C00AA476E /* Trip.swift */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,10 +294,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				973EC1E529F7955300C185BA /* Result.swift in Sources */,
 				043DDB6029F75A1900B90A95 /* ContentView.swift in Sources */,
 				043DDB9129F75DEF00B90A95 /* AddToSchedule.swift in Sources */,
 				043DDB8F29F75B0300B90A95 /* SignIn.swift in Sources */,
 				043DDB8B29F75AE700B90A95 /* Profile.swift in Sources */,
+				906132ED29F7624C00AA476E /* Trip.swift in Sources */,
 				043DDB8929F75ADB00B90A95 /* Home.swift in Sources */,
 				043DDB8D29F75AF700B90A95 /* Schedule.swift in Sources */,
 				043DDB5E29F75A1900B90A95 /* DartAppApp.swift in Sources */,

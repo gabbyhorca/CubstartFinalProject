@@ -35,7 +35,6 @@ struct Home: View{
                   }
                    Spacer()
                }
-               
            }
           Button(action: {
              
