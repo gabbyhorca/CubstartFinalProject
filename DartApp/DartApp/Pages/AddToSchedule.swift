@@ -8,10 +8,124 @@
 import Foundation
 import SwiftUI
 
-struct AddToSchedule: View {
+struct AddToSchedule: View{
+    @State var name = ""
+    @State var day = ""
+    @State var time = ""
     
     var body: some View {
-        Text("hi")
+        VStack {
+            HStack {
+                Image(systemName: "arrow.backward")
+                    .resizable()
+                    .frame(width: 20, height: 20, alignment: .topLeading)
+                    .padding(.leading, 20)
+                    .scaledToFit()
+                Text("Back")
+                    .font(.system(size: 19))
+                
+                Spacer()
+            }
+            .padding([.top, .bottom], 20)
+            
+        
+            Text("New Schedule")
+                .padding(.leading, 35)
+                .font(.system(size: 25, weight: .regular, design: .default))
+                .frame(maxWidth: .infinity, alignment: .topLeading)
+                .padding(.top, 20)
+            
+            HStack {
+                Text("Name")
+                TextField("Name", text: $name)
+                    .multilineTextAlignment(.leading)
+                    .padding(5)
+                    .padding([.leading, .trailing], 10)
+                    .padding([.bottom, .top], 3)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(.gray.opacity(0.2))
+                    .cornerRadius(19)
+                    .disableAutocorrection(true)
+                    .autocapitalization(.none)
+            }
+            .padding([.leading, .trailing], 35)
+            .font(.system(size: 20))
+            
+            HStack {
+                Text("Date")
+                    .padding(.trailing, 10)
+                TextField("Date", text: $day)
+                    .multilineTextAlignment(.leading)
+                    .padding(5)
+                    .padding([.leading, .trailing], 10)
+                    .padding([.bottom, .top], 3)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(.gray.opacity(0.2))
+                    .cornerRadius(19)
+                    .disableAutocorrection(true)
+                    .autocapitalization(.none)
+            }
+            .padding([.leading, .trailing], 35)
+            .font(.system(size: 20))
+            
+            HStack {
+                Text("Time")
+                    .padding(.trailing, 6)
+                TextField("Time", text: $time)
+                    .multilineTextAlignment(.leading)
+                    .padding(5)
+                    .padding([.leading, .trailing], 10)
+                    .padding([.bottom, .top], 3)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(.gray.opacity(0.2))
+                    .cornerRadius(19)
+                    .disableAutocorrection(true)
+                    .autocapitalization(.none)
+            }
+            .padding([.leading, .trailing], 35)
+            .font(.system(size: 20))
+            
+            
+            HStack {
+                Text("Line")
+                    .padding(.top, 30)
+                Image(systemName: "tram")
+                    .padding(10)
+                    .padding([.leading, .trailing], 10)
+                    .padding([.bottom, .top], 3)
+                    .padding(.top, 30)
+                Text("Downtown Berkeley - Embarcadero")
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.top, 30)
+                
+            }
+            .padding([.leading, .trailing], 35)
+            .font(.system(size: 20))
+            
+            ZStack {
+//                Image(systemName: "plus")
+//
+//                    .aspectRatio(contentMode: .fill)
+//                    .padding(10)
+//                    .padding([.leading, .trailing], 30)
+//                    .background(.gray.opacity(0.2))
+//                    .font(.system(size: 40))
+//                    .clipShape(Circle())
+                
+                Button{
+                    print("Added to Schedule")
+                } label: {
+                    Label("Add to Schedule", systemImage: "plus")
+                }
+            }
+            .padding(.top, 70)
+            .font(.title2)
+//            Text("Add to Schedule")
+//                .foregroundColor(.gray.opacity(0.7))
+//                .font(.system(size: 15))
+            Spacer()
+        }
+
     }
 }
 

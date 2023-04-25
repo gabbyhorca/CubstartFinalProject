@@ -8,14 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var navPath = NavigationPath()
-    @State var back = false;
     //@State private var presentedViews: [any View] = []
     
     var body: some View {
-        NavigationStack(path: $navPath){
-            Home(navPath: $navPath)
-        }
+        Home()
         
     }
 }
