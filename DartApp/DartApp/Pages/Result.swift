@@ -44,14 +44,17 @@ struct Result: View{
                .padding(.leading, 20)
                .frame(maxWidth: .infinity, alignment: .leading)
                .foregroundColor(.gray)
-          
-           Button("Add to Schedule") {
+           
+           Button {
                add.toggle()
+           } label: {
+               Label("Add to Schedule", systemImage: "plus")
            }
+           
            .foregroundColor(.white)
            .padding([.top, .bottom], 10)
            .padding([.leading, .trailing], 20)
-           .background(.yellow)
+           .background(.yellow.opacity(0.7))
            .font(.system(size: 20, weight: .bold))
            .cornerRadius(30)
            .frame(maxWidth: .infinity, alignment: .leading)

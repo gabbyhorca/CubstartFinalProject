@@ -15,6 +15,10 @@ struct SignIn: View{
     @State var forgotPassword = false
     @State var signUp = false
     var body: some View {
+        
+        
+        
+        
        VStack {
            Image("bart lines")
                .resizable()

@@ -28,7 +28,7 @@ struct AddToSchedule: View{
             }
             .padding([.top, .bottom], 20)
             
-            
+        
             Text("New Schedule")
                 .padding(.leading, 35)
                 .font(.system(size: 25, weight: .regular, design: .default))
@@ -45,6 +45,8 @@ struct AddToSchedule: View{
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .background(.gray.opacity(0.2))
                     .cornerRadius(19)
+                    .disableAutocorrection(true)
+                    .autocapitalization(.none)
             }
             .padding([.leading, .trailing], 35)
             .font(.system(size: 20))
@@ -52,7 +54,7 @@ struct AddToSchedule: View{
             HStack {
                 Text("Date")
                     .padding(.trailing, 10)
-                TextField("Date", text: $name)
+                TextField("Date", text: $day)
                     .multilineTextAlignment(.leading)
                     .padding(5)
                     .padding([.leading, .trailing], 10)
@@ -60,6 +62,8 @@ struct AddToSchedule: View{
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .background(.gray.opacity(0.2))
                     .cornerRadius(19)
+                    .disableAutocorrection(true)
+                    .autocapitalization(.none)
             }
             .padding([.leading, .trailing], 35)
             .font(.system(size: 20))
@@ -67,7 +71,7 @@ struct AddToSchedule: View{
             HStack {
                 Text("Time")
                     .padding(.trailing, 6)
-                TextField("Time", text: $name)
+                TextField("Time", text: $time)
                     .multilineTextAlignment(.leading)
                     .padding(5)
                     .padding([.leading, .trailing], 10)
@@ -75,6 +79,8 @@ struct AddToSchedule: View{
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .background(.gray.opacity(0.2))
                     .cornerRadius(19)
+                    .disableAutocorrection(true)
+                    .autocapitalization(.none)
             }
             .padding([.leading, .trailing], 35)
             .font(.system(size: 20))
@@ -97,19 +103,26 @@ struct AddToSchedule: View{
             .font(.system(size: 20))
             
             ZStack {
-                Image(systemName: "plus")
+//                Image(systemName: "plus")
+//
+//                    .aspectRatio(contentMode: .fill)
+//                    .padding(10)
+//                    .padding([.leading, .trailing], 30)
+//                    .background(.gray.opacity(0.2))
+//                    .font(.system(size: 40))
+//                    .clipShape(Circle())
                 
-                    .aspectRatio(contentMode: .fill)
-                    .padding(10)
-                    .padding([.leading, .trailing], 30)
-                    .background(.gray.opacity(0.2))
-                    .font(.system(size: 40))
-                    .clipShape(Circle())
+                Button{
+                    print("Added to Schedule")
+                } label: {
+                    Label("Add to Schedule", systemImage: "plus")
+                }
             }
             .padding(.top, 70)
-            Text("Add to Schedule")
-                .foregroundColor(.gray.opacity(0.7))
-                .font(.system(size: 15))
+            .font(.title2)
+//            Text("Add to Schedule")
+//                .foregroundColor(.gray.opacity(0.7))
+//                .font(.system(size: 15))
             Spacer()
         }
 
