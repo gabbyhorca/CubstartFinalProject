@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct RealTimeInfo: Codable {
+    let
+}
