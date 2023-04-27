@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		042AFDD029FA0FF2003C134E /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042AFDCF29FA0FF2003C134E /* Api.swift */; };
+		042AFDD229FA105F003C134E /* RealTimeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042AFDD129FA105F003C134E /* RealTimeInfo.swift */; };
 		043DDB5E29F75A1900B90A95 /* DartAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043DDB5D29F75A1900B90A95 /* DartAppApp.swift */; };
 		043DDB6029F75A1900B90A95 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043DDB5F29F75A1900B90A95 /* ContentView.swift */; };
 		043DDB6229F75A1B00B90A95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 043DDB6129F75A1B00B90A95 /* Assets.xcassets */; };
@@ -41,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		042AFDCF29FA0FF2003C134E /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		042AFDD129FA105F003C134E /* RealTimeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeInfo.swift; sourceTree = "<group>"; };
 		043DDB5A29F75A1900B90A95 /* DartApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DartApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		043DDB5D29F75A1900B90A95 /* DartAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DartAppApp.swift; sourceTree = "<group>"; };
 		043DDB5F29F75A1900B90A95 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -85,6 +89,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		042AFDCE29FA0FDA003C134E /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				042AFDCF29FA0FF2003C134E /* Api.swift */,
+				042AFDD129FA105F003C134E /* RealTimeInfo.swift */,
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
 		043DDB5129F75A1900B90A95 = {
 			isa = PBXGroup;
 			children = (
@@ -108,6 +121,7 @@
 		043DDB5C29F75A1900B90A95 /* DartApp */ = {
 			isa = PBXGroup;
 			children = (
+				042AFDCE29FA0FDA003C134E /* Api */,
 				906132EB29F7623700AA476E /* Classes */,
 				043DDB8729F75AC700B90A95 /* Pages */,
 				043DDB5D29F75A1900B90A95 /* DartAppApp.swift */,
@@ -302,6 +316,8 @@
 				906132ED29F7624C00AA476E /* Trip.swift in Sources */,
 				043DDB8929F75ADB00B90A95 /* Home.swift in Sources */,
 				043DDB8D29F75AF700B90A95 /* Schedule.swift in Sources */,
+				042AFDD029FA0FF2003C134E /* Api.swift in Sources */,
+				042AFDD229FA105F003C134E /* RealTimeInfo.swift in Sources */,
 				043DDB5E29F75A1900B90A95 /* DartAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

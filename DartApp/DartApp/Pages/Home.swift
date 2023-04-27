@@ -13,42 +13,50 @@ import SwiftUI
 struct Home: View {
     
     @State private var showingSheet1 = true
-    var body: some View {
-        
-   
-            Group {
-                ZStack {
-
-                    Image("map")
-                        .resizable()
-                        .frame(width: 400, height: 500, alignment: .top)
-                    Circle()
-                        .fill(.white)
-                        .frame(width: 50, height: 50, alignment: .topLeading)
-                        .position(x: 30, y: 65)
-                    
-                    HStack {
-                        VStack {
-                            Image(systemName: "person.circle")
-                                .resizable()
-                                .scaledToFit()
-                                .padding()
-                                .frame(width: 70, height: 70, alignment: .topLeading)
-                                .position(x: 30, y: 65)
-                        }
-                        Spacer()
-                    }
-                }
-                Button(action: {
-                    
-                }, label: {
-                }).sheet(isPresented: $showingSheet1) {
-                    Sheet1()
-                    .presentationDetents([.height(220), .medium, .large]) }
-                
-            }
+   var body: some View {
+      //NavigationStack(){
          
-        }
+         Group {
+            ZStack {
+               
+               Image("map")
+                  .resizable()
+                  .frame(width: 400, height: 500, alignment: .top)
+               Circle()
+                  .fill(.white)
+                  .frame(width: 50, height: 50, alignment: .topLeading)
+                  .position(x: 30, y: 65)
+               
+               HStack {
+                  VStack {
+                     Image(systemName: "person.circle")
+                        .resizable()
+                        .scaledToFit()
+                        .padding()
+                        .frame(width: 70, height: 70, alignment: .topLeading)
+                        .position(x: 30, y: 65)
+                  }
+//                  NavigationLink {
+//                     Home()
+//                  } label: {
+//                     Text("Go to Schedule").position(x: 100, y: 100)
+//                  }
+                  Spacer()
+               }
+            }
+            
+            
+            Button(action: {
+               
+            }, label: {
+            }).sheet(isPresented: $showingSheet1) {
+               Sheet1()
+               .presentationDetents([.height(220), .medium, .large]) }
+            
+         }
+         
+      }
+   //}
 }
 
 
@@ -116,8 +124,8 @@ struct Sheet1: View {
             }
             
          }
-      }
-   //}
+      //}
+   }
 }
 
 struct Home_Previews: PreviewProvider {
