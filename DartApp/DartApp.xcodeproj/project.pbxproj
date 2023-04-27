@@ -8,7 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		042AFDD029FA0FF2003C134E /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042AFDCF29FA0FF2003C134E /* Api.swift */; };
-		042AFDD229FA105F003C134E /* RealTimeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042AFDD129FA105F003C134E /* RealTimeInfo.swift */; };
+		042AFDE929FA33D8003C134E /* TestingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042AFDE829FA33D8003C134E /* TestingPage.swift */; };
+		042AFDEE29FA3898003C134E /* EstimatedDepartureTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042AFDED29FA3898003C134E /* EstimatedDepartureTimes.swift */; };
+		042AFDF029FA3963003C134E /* XMLObj.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042AFDEF29FA3963003C134E /* XMLObj.swift */; };
+		042AFDF229FA39C8003C134E /* Root.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042AFDF129FA39C8003C134E /* Root.swift */; };
+		042AFDF429FA3A1C003C134E /* URI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042AFDF329FA3A1C003C134E /* URI.swift */; };
+		042AFDF729FA3CD4003C134E /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042AFDF629FA3CD4003C134E /* Station.swift */; };
+		042AFDFA29FA3D9D003C134E /* ETD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042AFDF929FA3D9D003C134E /* ETD.swift */; };
+		042AFE0329FA4242003C134E /* EtdInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042AFE0229FA4242003C134E /* EtdInfo.swift */; };
 		043DDB5E29F75A1900B90A95 /* DartAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043DDB5D29F75A1900B90A95 /* DartAppApp.swift */; };
 		043DDB6029F75A1900B90A95 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043DDB5F29F75A1900B90A95 /* ContentView.swift */; };
 		043DDB6229F75A1B00B90A95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 043DDB6129F75A1B00B90A95 /* Assets.xcassets */; };
@@ -44,7 +51,14 @@
 
 /* Begin PBXFileReference section */
 		042AFDCF29FA0FF2003C134E /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
-		042AFDD129FA105F003C134E /* RealTimeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealTimeInfo.swift; sourceTree = "<group>"; };
+		042AFDE829FA33D8003C134E /* TestingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingPage.swift; sourceTree = "<group>"; };
+		042AFDED29FA3898003C134E /* EstimatedDepartureTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstimatedDepartureTimes.swift; sourceTree = "<group>"; };
+		042AFDEF29FA3963003C134E /* XMLObj.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLObj.swift; sourceTree = "<group>"; };
+		042AFDF129FA39C8003C134E /* Root.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Root.swift; sourceTree = "<group>"; };
+		042AFDF329FA3A1C003C134E /* URI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URI.swift; sourceTree = "<group>"; };
+		042AFDF629FA3CD4003C134E /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
+		042AFDF929FA3D9D003C134E /* ETD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETD.swift; sourceTree = "<group>"; };
+		042AFE0229FA4242003C134E /* EtdInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtdInfo.swift; sourceTree = "<group>"; };
 		043DDB5A29F75A1900B90A95 /* DartApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DartApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		043DDB5D29F75A1900B90A95 /* DartAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DartAppApp.swift; sourceTree = "<group>"; };
 		043DDB5F29F75A1900B90A95 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -92,10 +106,56 @@
 		042AFDCE29FA0FDA003C134E /* Api */ = {
 			isa = PBXGroup;
 			children = (
+				042AFDEA29FA37B5003C134E /* DataClasses */,
 				042AFDCF29FA0FF2003C134E /* Api.swift */,
-				042AFDD129FA105F003C134E /* RealTimeInfo.swift */,
 			);
 			path = Api;
+			sourceTree = "<group>";
+		};
+		042AFDEA29FA37B5003C134E /* DataClasses */ = {
+			isa = PBXGroup;
+			children = (
+				042AFDEF29FA3963003C134E /* XMLObj.swift */,
+				042AFDF529FA3C93003C134E /* RootClasses */,
+			);
+			path = DataClasses;
+			sourceTree = "<group>";
+		};
+		042AFDF529FA3C93003C134E /* RootClasses */ = {
+			isa = PBXGroup;
+			children = (
+				042AFDED29FA3898003C134E /* EstimatedDepartureTimes.swift */,
+				042AFDF329FA3A1C003C134E /* URI.swift */,
+				042AFDF129FA39C8003C134E /* Root.swift */,
+				042AFDF829FA3D8B003C134E /* StationClasses */,
+			);
+			path = RootClasses;
+			sourceTree = "<group>";
+		};
+		042AFDF829FA3D8B003C134E /* StationClasses */ = {
+			isa = PBXGroup;
+			children = (
+				042AFDF629FA3CD4003C134E /* Station.swift */,
+				042AFDFB29FA3DFC003C134E /* ETDClasses */,
+			);
+			path = StationClasses;
+			sourceTree = "<group>";
+		};
+		042AFDFB29FA3DFC003C134E /* ETDClasses */ = {
+			isa = PBXGroup;
+			children = (
+				042AFDF929FA3D9D003C134E /* ETD.swift */,
+				042AFE0129FA422A003C134E /* EtdClasses */,
+			);
+			path = ETDClasses;
+			sourceTree = "<group>";
+		};
+		042AFE0129FA422A003C134E /* EtdClasses */ = {
+			isa = PBXGroup;
+			children = (
+				042AFE0229FA4242003C134E /* EtdInfo.swift */,
+			);
+			path = EtdClasses;
 			sourceTree = "<group>";
 		};
 		043DDB5129F75A1900B90A95 = {
@@ -166,6 +226,7 @@
 				043DDB8E29F75B0300B90A95 /* SignIn.swift */,
 				043DDB9029F75DEF00B90A95 /* AddToSchedule.swift */,
 				973EC1E429F7955300C185BA /* Result.swift */,
+				042AFDE829FA33D8003C134E /* TestingPage.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -309,16 +370,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				973EC1E529F7955300C185BA /* Result.swift in Sources */,
+				042AFDFA29FA3D9D003C134E /* ETD.swift in Sources */,
 				043DDB6029F75A1900B90A95 /* ContentView.swift in Sources */,
 				043DDB9129F75DEF00B90A95 /* AddToSchedule.swift in Sources */,
 				043DDB8F29F75B0300B90A95 /* SignIn.swift in Sources */,
+				042AFDF429FA3A1C003C134E /* URI.swift in Sources */,
+				042AFDEE29FA3898003C134E /* EstimatedDepartureTimes.swift in Sources */,
+				042AFDE929FA33D8003C134E /* TestingPage.swift in Sources */,
 				043DDB8B29F75AE700B90A95 /* Profile.swift in Sources */,
+				042AFDF029FA3963003C134E /* XMLObj.swift in Sources */,
 				906132ED29F7624C00AA476E /* Trip.swift in Sources */,
 				043DDB8929F75ADB00B90A95 /* Home.swift in Sources */,
 				043DDB8D29F75AF700B90A95 /* Schedule.swift in Sources */,
 				042AFDD029FA0FF2003C134E /* Api.swift in Sources */,
-				042AFDD229FA105F003C134E /* RealTimeInfo.swift in Sources */,
+				042AFE0329FA4242003C134E /* EtdInfo.swift in Sources */,
 				043DDB5E29F75A1900B90A95 /* DartAppApp.swift in Sources */,
+				042AFDF729FA3CD4003C134E /* Station.swift in Sources */,
+				042AFDF229FA39C8003C134E /* Root.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
