@@ -1,11 +1,3 @@
-
-// This file was generated from JSON Schema using quicktype, do not modify it directly.
-// To parse the JSON, add this file to your project and do:
-//
-//   let welcome = try? JSONDecoder().decode(Welcome.self, from: jsonData)
-
-import Foundation
-
 // This file was generated from JSON Schema using quicktype, do not modify it directly.
 // To parse the JSON, add this file to your project and do:
 //
@@ -14,68 +6,58 @@ import Foundation
 import Foundation
 
 // MARK: - Welcome
-struct ReturnedData: Codable {
+struct ReturnedData : Codable {
     let xml: XML
     let root: Root
-
-    enum CodingKeys: String, CodingKey {
-        case xml = "?xml"
-        case root
-    }
 }
 
 // MARK: - Root
-struct Root: Codable {
+struct Root : Codable {
     let id: String
     let uri: URI
     let date, time: String
     let station: [Station]
     let message: String
-
-    enum CodingKeys: String, CodingKey {
-        case id = "@id"
-        case uri, date, time, station, message
-    }
 }
 
 // MARK: - Station
-struct Station: Codable {
+struct Station : Codable {
     let name, abbr: String
     let etd: [Etd]
 }
 
 // MARK: - Etd
-struct Etd: Codable {
+struct Etd : Codable {
     let destination: Destination
     let abbreviation: Abbreviation
     let limited: String
     let estimate: [Estimate]
 }
 
-enum Abbreviation: String, Codable {
-    case antc = "ANTC"
-    case bery = "BERY"
-    case daly = "DALY"
-    case dubl = "DUBL"
-    case mlbr = "MLBR"
-    case rich = "RICH"
-    case sfia = "SFIA"
+enum Abbreviation : Codable {
+    case antc
+    case bery
+    case daly
+    case dubl
+    case mlbr
+    case rich
+    case sfia
 }
 
-enum Destination: String, Codable {
-    case antioch = "Antioch"
-    case berryessa = "Berryessa"
-    case dalyCity = "Daly City"
-    case dublinPleasanton = "Dublin/Pleasanton"
-    case millbrae = "Millbrae"
-    case millbraeSFO = "Millbrae/SFO"
-    case richmond = "Richmond"
-    case sfAirport = "SF Airport"
-    case sfoMillbrae = "SFO/Millbrae"
+enum Destination : Codable {
+    case antioch
+    case berryessa
+    case dalyCity
+    case dublinPleasanton
+    case millbrae
+    case millbraeSFO
+    case richmond
+    case sfAirport
+    case sfoMillbrae
 }
 
 // MARK: - Estimate
-struct Estimate: Codable {
+struct Estimate : Codable {
     let minutes, platform: String
     let direction: Direction
     let length: String
@@ -84,44 +66,35 @@ struct Estimate: Codable {
     let bikeflag, delay, cancelflag, dynamicflag: String
 }
 
-enum Col: String, Codable {
-    case blue = "BLUE"
-    case green = "GREEN"
-    case orange = "ORANGE"
-    case red = "RED"
-    case white = "WHITE"
-    case yellow = "YELLOW"
+enum Col : Codable {
+    case blue
+    case green
+    case orange
+    case red
+    case white
+    case yellow
 }
 
-enum Direction: String, Codable {
-    case north = "North"
-    case south = "South"
+enum Direction : Codable {
+    case north
+    case south
 }
 
-enum Hexcolor: String, Codable {
-    case ff0000 = "#ff0000"
-    case ff9933 = "#ff9933"
-    case ffff33 = "#ffff33"
-    case ffffff = "#ffffff"
-    case the0099Cc = "#0099cc"
-    case the339933 = "#339933"
+enum Hexcolor : Codable {
+    case ff0000
+    case ff9933
+    case ffff33
+    case ffffff
+    case the0099Cc
+    case the339933
 }
 
 // MARK: - URI
-struct URI: Codable {
+struct URI : Codable {
     let cdataSection: String
-
-    enum CodingKeys: String, CodingKey {
-        case cdataSection = "#cdata-section"
-    }
 }
 
 // MARK: - XML
-struct XML: Codable {
+struct XML : Codable {
     let version, encoding: String
-
-    enum CodingKeys: String, CodingKey {
-        case version = "@version"
-        case encoding = "@encoding"
-    }
 }

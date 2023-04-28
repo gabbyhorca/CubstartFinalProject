@@ -27,12 +27,14 @@ func fetchReturnedData() async-> ReturnedData? {
 }
 
 func fetchReturnedDataContinuous() async -> ReturnedData {
+   
     // Try to get a Dog
       var newReturnedData = (await fetchReturnedData()) ?? nil
 
     // Check if there is a Dog
     while (newReturnedData == nil) {
         // Try again to get Dog
+       print("Test")
         newReturnedData = (await fetchReturnedData()) ?? nil
     }
     
