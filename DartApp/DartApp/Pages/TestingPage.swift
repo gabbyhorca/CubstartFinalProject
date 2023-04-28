@@ -13,11 +13,10 @@ struct TestingPage: View {
    var body: some View {
       
       VStack {
-         if(true){
-            Task {
-               let estimatedDep = await fetchEstimatedDepartureTimes()
+         Task {
+            do {
+               let estimatedDep = try await fetchEstimatedDepartureTimes()
             }
-            
          }
       }
       
