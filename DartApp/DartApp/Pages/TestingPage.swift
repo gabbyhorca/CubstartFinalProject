@@ -13,10 +13,14 @@ struct TestingPage: View {
    var body: some View {
       
       VStack {
-         Task {
-            do {
-               let estimatedDep = try await fetchEstimatedDepartureTimes()
-            }
+         
+      }
+      .task {
+         do {
+            let estimatedDep = try await fetchReturnedDataContinuous()
+            print(estimatedDep.root.date)
+         } catch {
+            print("boo")
          }
       }
       
