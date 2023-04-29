@@ -7,18 +7,53 @@
 
 import Foundation
 import SwiftUI
+import Firebase
+import FirebaseCore
+import FirebaseAuth
 
 struct SignIn: View {
-    
+    @State var testemail = "test@gmail.com"
+    @State var testpassword = "12345#"
     @State var email = ""
     @State var password = ""
     @State var loggedIn = false
     @State var forgotPassword = false
     @State var signUp = false
+    @State var loginError = false
+    
+    init() {
+        FirebaseApp.configure()
+    }
+    
+    func login() {
+        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
+            if error != nil {
+                print(error?.localizedDescription ?? "")
+            } else {
+                //                TODO: update the variable to track that the user has successfully logged in
+                loggedIn = true;
+                print("success")
+            }
+        }
+    }
+    
+    func createAcct() {
+        Auth.auth().createUser(withEmail: email, password: password) { (result, error) in
+            if error != nil {
+                print(error?.localizedDescription ?? "")
+                loginError = true
+            } else {
+                //                TODO: update the variable to track that the user has successfully logged in
+                               signUp.toggle();
+                                print("success")
+                            }
+                        }
+                    }
+    
     var body: some View {
-        
-        
-        
+        if (loggedIn) {
+            Home()
+        }
         
        VStack {
            Image("bart lines")
@@ -32,7 +67,7 @@ struct SignIn: View {
                .font(.system(size: 19))
                .frame(maxWidth: 300, alignment: .leading)
            
-           TextField("Username", text: $email)
+           TextField("Email", text: $email)
                .multilineTextAlignment(.leading)
                .textFieldStyle(.roundedBorder)
                .textFieldStyle(PlainTextFieldStyle())
@@ -69,8 +104,8 @@ struct SignIn: View {
            
            
            HStack {
-               Button("Log In") {
-                   loggedIn.toggle()
+               Button(action: { login() }) {
+                   Text("Log in")
                }
                .frame(height: 100, alignment: .center)
                .buttonStyle(.bordered).tint(.blue)
@@ -83,8 +118,16 @@ struct SignIn: View {
            
            HStack {
                Text("Don't have an account?")
-               Button("Sign Up!") {
-                   signUp.toggle()
+               Button(action : {createAcct()}) {
+                   Text("Sign Up with Entered Credentials")
+               }
+           }
+           VStack{
+               if (signUp) {
+                   Text("Signed up!")
+               }
+               if (loginError) {
+                   Text("Incorrect credentials")
                }
            }
            Spacer()

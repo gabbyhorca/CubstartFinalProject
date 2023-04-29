@@ -37,6 +37,7 @@ func fetchReturnedDataContinuous() async -> ReturnedData {
        print("Test")
         newReturnedData = (await fetchReturnedData()) ?? nil
     }
+    print("Success")
     
     // Can force-unwrap because newDog is guaranteed a dog.
     return newReturnedData!

@@ -8,10 +8,13 @@
 import SwiftUI
 
 @main
+
 struct DartAppApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+
+  var body: some Scene {
+    WindowGroup {
+      ContentView()
     }
+  }
 }
+

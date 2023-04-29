@@ -17,8 +17,8 @@ struct TestingPage: View {
       }
       .task {
          do {
-            let estimatedDep = try await fetchReturnedDataContinuous()
-               print(estimatedDep.root.date)
+            let estimatedDep = try await fetchReturnedData()
+               print(estimatedDep!.root.date)
             print("here")
          } catch {
             print("boo")
