@@ -8,12 +8,12 @@
 import Foundation
 
 func fetchReturnedData() async-> ReturnedData? {
-    guard let url = URL(string: "https://api.bart.gov/api/etd.aspx?cmd=etd&orig=all&key=QJJR-5LTA-978T-DWEI&json=y")
+    guard let url = URL(string: "https://api.bart.gov/api/etd.aspx?cmd=etd&orig=all&key=MW9S-E7SL-26DU-VV8V&json=y")
     else {
         return nil
     }
     
-    let api_key = "QJJR-5LTA-978T-DWEI"
+
     
     do {
         let (data, _) = try await URLSession.shared.data(from: url)

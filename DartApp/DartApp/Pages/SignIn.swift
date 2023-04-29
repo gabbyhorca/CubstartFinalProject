@@ -122,14 +122,7 @@ struct SignIn: View {
                    Text("Sign Up with Entered Credentials")
                }
            }
-           VStack{
-               if (signUp) {
-                   Text("Signed up!")
-               }
-               if (loginError) {
-                   Text("Incorrect credentials")
-               }
-           }
+           
            Spacer()
        }
     }
