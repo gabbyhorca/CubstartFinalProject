@@ -11,44 +11,53 @@ import Foundation
 import SwiftUI
 
 struct Home: View {
-    
-    @State private var showingSheet1 = true
+   
+   @State var showingSheet1 = true
+   
    var body: some View {
-      //NavigationStack(){
-         
-         Group {
-             VStack {
-                 ZStack {
-                     Image("map")
-                         .resizable()
-                         .frame(maxHeight: .infinity, alignment: .top)
-//                     NavigationStack {
-                             NavigationLink {
-                                 Profile()
-                                     .frame(maxWidth: .infinity, maxHeight: .infinity)
-                                     .edgesIgnoringSafeArea(.all)
-                             } label: {
-                                 Image(systemName: "person.circle")
-                                     .resizable()
-                                     .scaledToFit()
-                                     .padding()
-                                     .frame(width: 70, height: 70, alignment: .topLeading)
-                                     .position(x: 30, y: 65)
-                             }
-//                         }
-                     }
-                 Button(action: {
-                     
-                 }, label: {
-                     
-                 }).sheet(isPresented: $showingSheet1) {
-                     Sheet1()
-                         .padding()
-                         .presentationDetents([.height(220), .medium, .large])
-                 }
-             }
+      NavigationStack(){
+      
+      Group {
+         VStack {
+            ZStack {
+ 
+               Image("map")
+                  .resizable()
+                  .frame(maxHeight: .infinity, alignment: .top)
+               //                     NavigationStack {
+               NavigationLink {
+                  Profile()
+                     .frame(maxWidth: .infinity, maxHeight: .infinity)
+                     .edgesIgnoringSafeArea(.all)
+               } label: {
+                  Image(systemName: "person.circle")
+                     .resizable()
+                     .scaledToFit()
+                     .padding()
+                     .frame(width: 70, height: 70, alignment: .topLeading)
+                     .position(x: 30, y: 65)
+               }
+               if (!showingSheet1) {
+                  Color.white
+                     .ignoresSafeArea()
+                  AddToSchedule()
+               }
+               //                         }
+            }
+            Button(action: {
+
+            }, label: {
+               
+            }).sheet(isPresented: $showingSheet1) {
+               Sheet1()
+                  .padding()
+                  .presentationDetents([.height(220), .medium, .large])
+            }
+
          }
+      }
    }
+}
 }
 
 
@@ -61,6 +70,8 @@ struct Sheet1: View {
 //        showResults = true
 //    }
    var body: some View {
+         
+         
          Group {
             VStack {
                TextField("Add a location", text: $location)
@@ -80,21 +91,21 @@ struct Sheet1: View {
                   .foregroundColor(.black)
                   .padding(.trailing, 250)
                   .padding(3)
-                
+               
                //button should lead to results page
-                
-//               Button("Naya Resto") {
-//
-//               }
-//               .foregroundColor(.black)
-//               .padding(.trailing, 200)
+               
+               //               Button("Naya Resto") {
+               //
+               //               }
+               //               .foregroundColor(.black)
+               //               .padding(.trailing, 200)
             }
             
             Spacer()
             
             HStack {
                Button(action: {
-                   
+                  dismiss()
                }, label: {
                   Image(systemName: "list.bullet.below.rectangle")
                      .resizable()
@@ -108,11 +119,11 @@ struct Sheet1: View {
                      .clipShape(Circle())
                   Spacer()
                })
-               .interactiveDismissDisabled()
                .padding().foregroundColor(.black)
             }
          }
-   }
+      }
+   
 }
 
 struct Home_Previews: PreviewProvider {
