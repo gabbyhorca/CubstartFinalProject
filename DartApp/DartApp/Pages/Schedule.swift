@@ -18,6 +18,8 @@ struct Schedule: View {
     
     func addTripListItems() {
         tripList = [dummyt1, dummyt2]
+        // Trying to generalize code by appendng new trip to existing tripList. Maybe let this func has a trip argument? 
+//        tripList.append(trip)
         //Add your objects to your list here!
         
     }
@@ -99,6 +101,6 @@ struct Schedule: View {
 
 struct Schedule_Previews: PreviewProvider {
     static var previews: some View {
-        AddToSchedule()
+        Schedule()
     }
 }

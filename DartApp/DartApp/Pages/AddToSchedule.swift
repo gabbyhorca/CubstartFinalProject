@@ -12,23 +12,37 @@ struct AddToSchedule: View{
     @State var name = ""
     @State var day = ""
     @State var time = ""
+    @State private var showingSheet2 = true
+    @StateObject var newtrip : Trip = Trip(name: "", time: "", date: "", trainLine: "Red", tripStart: "Downtown Berkeley", tripDestination: "Embarcadero")
     
     var body: some View {
         VStack {
             HStack {
-                Image(systemName: "arrow.backward")
-                    .resizable()
-                    .frame(width: 20, height: 20, alignment: .topLeading)
-                    .padding(.leading, 20)
-                    .scaledToFit()
-                Text("Back")
-                    .font(.system(size: 19))
-                
-                Spacer()
-            }
-            .padding([.top, .bottom], 20)
-            
-        
+                NavigationStack {
+                    NavigationLink {
+                        Home()
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
+                            .edgesIgnoringSafeArea(.all)
+                    } label: {
+                        Image(systemName: "arrow.backward")
+                            .resizable()
+                            .frame(width: 20, height: 20, alignment: .topLeading)
+                            .scaledToFit()
+                        Text("Back")
+                            .font(.system(size: 19))
+                    }
+                    .frame(alignment: .topLeading)
+                    // Trying to call dismiss() here 
+//                    .onTapGesture {
+//                        .sheet(isPresented: $showingSheet2) {
+//                            Sheet2()
+//                                .padding()
+//                                .presentationDetents([.height(220), .medium, .large])
+//                        }
+                    }
+                }
+//            }
+
             Text("New Schedule")
                 .padding(.leading, 35)
                 .font(.system(size: 25, weight: .regular, design: .default))
@@ -103,29 +117,41 @@ struct AddToSchedule: View{
             .font(.system(size: 20))
             
             ZStack {
-//                Image(systemName: "plus")
-//
-//                    .aspectRatio(contentMode: .fill)
-//                    .padding(10)
-//                    .padding([.leading, .trailing], 30)
-//                    .background(.gray.opacity(0.2))
-//                    .font(.system(size: 40))
-//                    .clipShape(Circle())
-                
                 Button{
-                    print("Added to Schedule")
+                    // I'm trying to create an instance of a trip, then add that new trip to the tripList
+                    
+//                    print("Added to Schedule")
+
+//                    let newtrip = Trip(name: "date w bf", time: "", date: "", trainLine: "", tripStart: "", tripDestination: "")
+//                    newtrip.addTripListItems(trip: newtrip)
+//                    Home()
+                    
                 } label: {
                     Label("Add to Schedule", systemImage: "plus")
                 }
             }
             .padding(.top, 70)
             .font(.title2)
-//            Text("Add to Schedule")
-//                .foregroundColor(.gray.opacity(0.7))
-//                .font(.system(size: 15))
             Spacer()
+            Spacer()
+            Spacer()
+                .padding(.bottom, 100)
         }
 
+    }
+}
+struct Sheet2: View {
+    @State var location = ""
+    @State var showResults = false
+    //This code allows us to call the dismiss() function which closes the sheet view
+    @Environment(\.dismiss) var dismiss
+    //    if (location.count > 0) {
+    //        showResults = true
+    //    }
+    var body: some View {
+        Home()
+            .interactiveDismissDisabled()
+            .padding().foregroundColor(.black)
     }
 }
 
