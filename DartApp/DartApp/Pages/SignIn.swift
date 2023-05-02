@@ -35,6 +35,8 @@ struct SignIn: View {
                 //                TODO: update the variable to track that the user has successfully logged in
                 loggedIn = true;
                 print("success")
+                Color.white
+                    .ignoresSafeArea()
                 Home(tripList : $tripList)
             }
         }

@@ -13,8 +13,8 @@ struct ContentView: View {
     
     var body: some View {
        
-        //SignIn()
-        Home(tripList: $tlist)
+        SignIn()
+        //Home(tripList: $tlist)
     }
 }
 

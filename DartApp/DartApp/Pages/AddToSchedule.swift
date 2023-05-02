@@ -20,10 +20,20 @@ struct AddToSchedule: View{
     @State private var showingSheet2 = true
     @StateObject var newtrip : Trip = Trip(name: "", date: Date(), trainLine: "Red", tripStart: "Downtown Berkeley", tripDestination: "Embarcadero")
     
+    let notify = NotificationHandler()
+    
+    
     func addTrip(name: String, date: Date, trainLine: String, tripStart: String, tripDestination: String) {
-        var tempTrip = Trip(name: name, date: date, trainLine: trainLine, tripStart: tripStart, tripDestination: tripDestination)
+        let tempTrip = Trip(name: name, date: date, trainLine: trainLine, tripStart: tripStart, tripDestination: tripDestination)
         tripList.append(tempTrip)
+        print("Trip added")
+        let title = "Reminder: Scheduled Trip"
+        let b = "Train for " + name + " will depart soon"
+        notify.sendNotification(date: date, type: "date", title: title, body: b)
+        
     }
+    
+
     
     var body: some View {
         VStack {
@@ -130,7 +140,7 @@ struct AddToSchedule: View{
                 Button{
                 action: do{
                     addTrip(name: name, date: date, trainLine: "red", tripStart: startLoc, tripDestination: endLoc);
-                    print(tripList[0].name)}
+                    print(tripList[tripList.count - 1].name)}
                     Home(tripList: $tripList)
                     // I'm trying to create an instance of a trip, then add that new trip to the tripList
                     
@@ -150,7 +160,7 @@ struct AddToSchedule: View{
             Spacer()
             Spacer()
                 .padding(.bottom, 100)
-        }
+        }.onAppear(perform: notify.askPermission)
 
     }
 }
