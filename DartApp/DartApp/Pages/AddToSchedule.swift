@@ -161,6 +161,7 @@ struct AddToSchedule: View{
             Spacer()
                 .padding(.bottom, 100)
         }.onAppear(perform: notify.askPermission)
+          .padding(_: 100)
 
     }
 }

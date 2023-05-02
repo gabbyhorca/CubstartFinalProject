@@ -12,25 +12,32 @@ struct Profile: View{
     @Binding var tripList: [Trip]
    var body: some View {
       VStack {
-         Button(action: {
-             Home(tripList: $tripList)
-         }, label: {
-            HStack {
-               Image("homeIcon")
-                  .resizable()
-                  .scaledToFit()
-                  .cornerRadius(50)
-                  .frame(width: 20.0, height: 20.0)
-               
-               Text("Home")
-                  .font(.system(size: 12, weight: .regular, design: .default))
-                  .foregroundColor(.black)
-               
-               
-               Spacer()
-            }
-         })
-         .padding(.bottom, 40)
+         HStack{
+            NavigationLink {
+               Home(tripList: $tripList)
+            } label: {
+               Button(action: {
+                  
+               }, label: {
+                  HStack {
+                     NavigationLink {
+                        Home(tripList: $tripList).navigationBarBackButtonHidden(true)
+                           .frame(maxWidth: .infinity, maxHeight: .infinity)
+                           .edgesIgnoringSafeArea(.all)
+                     } label: {
+                        Image(systemName: "arrow.backward")
+                           .resizable()
+                           .frame(width: 20, height: 20, alignment: .topLeading)
+                           .scaledToFit()
+                        Text("Back")
+                           .font(.system(size: 19))
+                     }
+                     .frame(alignment: .topLeading)
+                  }
+               })
+            }.padding(.top, 50)
+            Spacer()
+         }
          
          Group {
             Text("Settings")
