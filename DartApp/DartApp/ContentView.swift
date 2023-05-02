@@ -12,9 +12,10 @@ struct ContentView: View {
     @State var tlist : [Trip] = []
     
     var body: some View {
-       
+        
         SignIn()
         //Home(tripList: $tlist)
+        
     }
 }
 

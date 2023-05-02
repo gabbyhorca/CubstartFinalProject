@@ -10,6 +10,7 @@
 import Foundation
 import SwiftUI
 
+
 func askPermission() {
     UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.badge,.sound]) { success, error in
         if success {
@@ -24,6 +25,7 @@ struct Home: View {
     @State var start : String = "UC Berkeley"
     @State var location = ""
     @State var showingSheet1 = true
+    
     var body: some View {
         NavigationStack(){
             
@@ -46,43 +48,58 @@ struct Home: View {
                                 .padding()
                                 .frame(width: 70, height: 70, alignment: .topLeading)
                                 .position(x: 30, y: 65)
+                            //                        }
+                            //<<<<<<< HEAD
+                            //                        if (!showingSheet1) {
+                            //                            Color.white
+                            //                                .ignoresSafeArea()
+                            //                            AddToSchedule(tripList: $tripList, startLoc: $start, endLoc: $location)
+                            //                        }
+                            //=======
+                            //                         }
+                            //>>>>>>> 2ab9df59fc74075a46049da4a2c98bf4ce55e451
+                        }
+                        Button(action: {
+                            showingSheet1 = false
+                        }, label: {
+                            
+                        }).sheet(isPresented: $showingSheet1) {
+                            Sheet1(tripList: $tripList, start: $start, location: $location)
+                                .padding()
+                                .presentationDetents([.height(220), .medium, .large])
                         }
                         if (!showingSheet1) {
                             Color.white
                                 .ignoresSafeArea()
-                            AddToSchedule(tripList: $tripList, startLoc: $start, endLoc: $location)
+                            Schedule(tripList: $tripList)
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                .edgesIgnoringSafeArea(.all)
                         }
-                    }
-                    Button(action: {
                         
-                    }, label: {
-                        
-                    }).sheet(isPresented: $showingSheet1) {
-                        Sheet1(tripList: $tripList, start: $start, location: $location)
-                            .padding()
-                            .presentationDetents([.height(220), .medium, .large])
                     }
-                    
-                }
-            }.onAppear(perform: askPermission)
+                }.onAppear(perform: askPermission)
+            }
         }
     }
 }
 
 
 struct Sheet1: View {
+
     @Binding var tripList: [Trip]
     @Binding var start : String
     @Binding var location : String
     @State var showResults = false
+
+   
    //This code allows us to call the dismiss() function which closes the sheet view
-    @Environment(\.dismiss) var dismiss
-//    if (location.count > 0) {
-//        showResults = true
-//    }
+   @Environment(\.dismiss) var dismiss
+   //    if (location.count > 0) {
+   //        showResults = true
+   //    }
    var body: some View {
-         
-         
+      
+      NavigationStack(){
          Group {
             VStack {
                TextField("Add a location", text: $location)
@@ -97,11 +114,19 @@ struct Sheet1: View {
                   .background(.gray.opacity(0.2))
                   .cornerRadius(19)
                   .padding(.top, 10)
+               HStack {
+                  Text("Results")
+                     .foregroundColor(.black)
+                     .padding(3)
+                  NavigationLink {
+                      AddToSchedule(tripList: $tripList, startLoc: $start, endLoc: $location)
+                       .frame(maxWidth: .infinity, maxHeight: .infinity)
+                       .edgesIgnoringSafeArea(.all)
+                  } label: {
+                     Text("Add to schedule")
+                  }
+               }
                
-               Text("Results")
-                  .foregroundColor(.black)
-                  .padding(.trailing, 250)
-                  .padding(3)
                
                //button should lead to results page
                
@@ -135,14 +160,17 @@ struct Sheet1: View {
             }
          }
       }
+      
+   }
    
+
 }
 
 struct Home_Previews: PreviewProvider {
     @State static var tlist: [Trip] = []
-   static var previews: some View {
-       Home(tripList: $tlist, location: "Union Square")
-   }
+    static var previews: some View {
+        Home(tripList: $tlist, location: "Union Square")
+    }
 }
 
 
