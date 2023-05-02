@@ -10,6 +10,7 @@
 import Foundation
 import SwiftUI
 
+
 func askPermission() {
     UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.badge,.sound]) { success, error in
         if success {
@@ -20,7 +21,6 @@ func askPermission() {
     }
 }
 struct Home: View {
-   
    @State var showingSheet1 = true
     var body: some View {
         NavigationStack(){
@@ -59,7 +59,9 @@ struct Home: View {
                    if (!showingSheet1) {
                        Color.white
                            .ignoresSafeArea()
-                       AddToSchedule()
+                       Schedule()
+                         .frame(maxWidth: .infinity, maxHeight: .infinity)
+                         .edgesIgnoringSafeArea(.all)
                    }
                     
                 }
@@ -70,16 +72,17 @@ struct Home: View {
 
 
 struct Sheet1: View {
-    @State var location = ""
-    @State var showResults = false
+   @State var location = ""
+   @State var showResults = false
+   
    //This code allows us to call the dismiss() function which closes the sheet view
-    @Environment(\.dismiss) var dismiss
-//    if (location.count > 0) {
-//        showResults = true
-//    }
+   @Environment(\.dismiss) var dismiss
+   //    if (location.count > 0) {
+   //        showResults = true
+   //    }
    var body: some View {
-         
-         
+      
+      NavigationStack(){
          Group {
             VStack {
                TextField("Add a location", text: $location)
@@ -94,11 +97,19 @@ struct Sheet1: View {
                   .background(.gray.opacity(0.2))
                   .cornerRadius(19)
                   .padding(.top, 10)
+               HStack {
+                  Text("Results")
+                     .foregroundColor(.black)
+                     .padding(3)
+                  NavigationLink {
+                     AddToSchedule()
+                       .frame(maxWidth: .infinity, maxHeight: .infinity)
+                       .edgesIgnoringSafeArea(.all)
+                  } label: {
+                     Text("Add to schedule")
+                  }
+               }
                
-               Text("Results")
-                  .foregroundColor(.black)
-                  .padding(.trailing, 250)
-                  .padding(3)
                
                //button should lead to results page
                
@@ -131,11 +142,12 @@ struct Sheet1: View {
             }
          }
       }
+      
+   }
    
-}
-
-struct Home_Previews: PreviewProvider {
-   static var previews: some View {
-      Home()
+   struct Home_Previews: PreviewProvider {
+      static var previews: some View {
+         Home()
+      }
    }
 }

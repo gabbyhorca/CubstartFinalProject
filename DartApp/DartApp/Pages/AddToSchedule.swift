@@ -24,12 +24,12 @@ struct AddToSchedule: View{
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                             .edgesIgnoringSafeArea(.all)
                     } label: {
-                        Image(systemName: "arrow.backward")
-                            .resizable()
-                            .frame(width: 20, height: 20, alignment: .topLeading)
-                            .scaledToFit()
-                        Text("Back")
-                            .font(.system(size: 19))
+//                        Image(systemName: "arrow.backward")
+//                            .resizable()
+//                            .frame(width: 20, height: 20, alignment: .topLeading)
+//                            .scaledToFit()
+//                        Text("Back")
+//                            .font(.system(size: 19))
                     }
                     .frame(alignment: .topLeading)
                     // Trying to call dismiss() here 

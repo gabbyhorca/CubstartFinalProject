@@ -35,12 +35,19 @@ struct Schedule: View {
                             
                         }, label: {
                             HStack {
-                                Image("backArrow")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .cornerRadius(50)
-                                    .frame(width: 20, height: 20)
-                                Text("Back").foregroundColor(.black)
+                               NavigationLink {
+                                   Home()
+                                       .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                       .edgesIgnoringSafeArea(.all)
+                               } label: {
+                                   Image(systemName: "arrow.backward")
+                                       .resizable()
+                                       .frame(width: 20, height: 20, alignment: .topLeading)
+                                       .scaledToFit()
+                                   Text("Back")
+                                       .font(.system(size: 19))
+                               }
+                               .frame(alignment: .topLeading)
                             }
                         })
                     }
