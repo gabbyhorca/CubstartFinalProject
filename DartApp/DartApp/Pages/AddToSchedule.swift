@@ -140,7 +140,11 @@ struct AddToSchedule: View{
                 Button{
                 action: do{
                     addTrip(name: name, date: date, trainLine: "red", tripStart: startLoc, tripDestination: endLoc);
-                    print(tripList[tripList.count - 1].name)}
+                    print(tripList[tripList.count - 1].name)
+                    let title = "Reminder: Scheduled Trip"
+                    let b = "Train for " + name + " will depart soon"
+                    //notify.sendNotification(date: date, type: "date", title: title, body: b)
+                }
                     Home(tripList: $tripList)
                     // I'm trying to create an instance of a trip, then add that new trip to the tripList
                     
