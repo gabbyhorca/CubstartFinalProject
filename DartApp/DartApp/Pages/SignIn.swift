@@ -118,7 +118,7 @@ struct SignIn: View {
                
                
                HStack {
-                  NavigationLink(destination: Home(tripList: $tripList)) {
+                  NavigationLink(destination: Home(tripList: $tripList).navigationBarBackButtonHidden(true)) {
                      Text("Log in")
                         .frame(height: 100, alignment: .center)
                         .buttonStyle(.bordered).tint(.blue)

@@ -36,7 +36,7 @@ struct Schedule: View {
                         }, label: {
                             HStack {
                                NavigationLink {
-                                   Home(tripList: $tripList)
+                                   Home(tripList: $tripList).navigationBarBackButtonHidden(true)
                                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                                        .edgesIgnoringSafeArea(.all)
                                } label: {

@@ -142,7 +142,7 @@ struct Sheet1: View {
             HStack {
                Button(action: {
                    dismiss();
-                  Schedule(tripList: $tripList)
+                  //Schedule(tripList: $tripList)
                }, label: {
                   Image(systemName: "list.bullet.below.rectangle")
                      .resizable()
