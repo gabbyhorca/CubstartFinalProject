@@ -13,11 +13,11 @@ struct Schedule: View {
    
    @Binding var tripList: [Trip]
    
-   @StateObject var dummyt1 : Trip = Trip(name: "Test Trip 1", date: Date(), trainLine: "Red", tripStart: "Downtown Berkeley", tripDestination: "Embarcadero")
+   @StateObject var dummyt1 : Trip = Trip(name: "Trip 1", date: Date(), trainLine: "Red", tripStart: "Downtown Berkeley", tripDestination: "Embarcadero")
    @StateObject var dummyt2 : Trip = Trip(name: "Test Trip 2", date: Date(), trainLine: "Blue", tripStart: "Downtown Berkeley", tripDestination: "Ashby")
    
    func addTripListItems() {
-      tripList = [dummyt1, dummyt2]
+      //tripList = [dummyt1]
       // Trying to generalize code by appendng new trip to existing tripList. Maybe let this func has a trip argument?
       //        tripList.append(trip)
       //Add your objects to your list here!
