@@ -28,7 +28,6 @@ struct Home: View {
     
     var body: some View {
         NavigationStack(){
-            
             Group {
                 VStack {
                     ZStack {
@@ -38,7 +37,7 @@ struct Home: View {
                             .frame(maxHeight: .infinity, alignment: .top)
                         //                     NavigationStack {
                         NavigationLink {
-                            Profile(tripList: $tripList)
+                           Profile(tripList: $tripList).navigationBarBackButtonHidden(true)
                                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                                 .edgesIgnoringSafeArea(.all)
                         } label: {
@@ -48,16 +47,6 @@ struct Home: View {
                                 .padding()
                                 .frame(width: 70, height: 70, alignment: .topLeading)
                                 .position(x: 30, y: 65)
-                            //                        }
-                            //<<<<<<< HEAD
-                            //                        if (!showingSheet1) {
-                            //                            Color.white
-                            //                                .ignoresSafeArea()
-                            //                            AddToSchedule(tripList: $tripList, startLoc: $start, endLoc: $location)
-                            //                        }
-                            //=======
-                            //                         }
-                            //>>>>>>> 2ab9df59fc74075a46049da4a2c98bf4ce55e451
                         }
                         Button(action: {
                             showingSheet1 = false
@@ -68,14 +57,6 @@ struct Home: View {
                                 .padding()
                                 .presentationDetents([.height(220), .medium, .large])
                         }
-                        if (!showingSheet1) {
-                            Color.white
-                                .ignoresSafeArea()
-                           Schedule(tripList: $tripList)
-                                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                                .edgesIgnoringSafeArea(.all)
-                        }
-                        
                     }
                 }.onAppear(perform: askPermission)
             }
@@ -140,10 +121,8 @@ struct Sheet1: View {
             Spacer()
             
             HStack {
-               Button(action: {
-                   dismiss();
-                  //Schedule(tripList: $tripList)
-               }, label: {
+               NavigationLink(destination: Schedule(tripList: $tripList)) {
+                     
                   Image(systemName: "list.bullet.below.rectangle")
                      .resizable()
                      .frame(width: 45, height: 45, alignment: .bottomLeading)
@@ -155,8 +134,25 @@ struct Sheet1: View {
                      .padding([.leading, .trailing], 30)
                      .clipShape(Circle())
                   Spacer()
-               })
-               .padding().foregroundColor(.black)
+               }.padding().foregroundColor(.black)
+            
+//               Button(action: {
+//                   dismiss();
+//                  //Schedule(tripList: $tripList)
+//               }, label: {
+//                  Image(systemName: "list.bullet.below.rectangle")
+//                     .resizable()
+//                     .frame(width: 45, height: 45, alignment: .bottomLeading)
+//                     .aspectRatio(contentMode: .fill)
+//                     .padding(20)
+//                     .cornerRadius(50)
+//                     .background(.gray.opacity(0.2))
+//                     .scaledToFit()
+//                     .padding([.leading, .trailing], 30)
+//                     .clipShape(Circle())
+//                  Spacer()
+//               })
+//               .padding().foregroundColor(.black)
             }
          }
       }
