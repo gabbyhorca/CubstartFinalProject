@@ -104,7 +104,7 @@ struct SignIn: View {
            
            
            HStack {
-               Button(action: { login() }) {
+               Button(action: {login()}) {
                    Text("Log in")
                }
                .frame(height: 100, alignment: .center)

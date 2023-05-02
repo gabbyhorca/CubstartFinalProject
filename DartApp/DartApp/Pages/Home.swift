@@ -10,66 +10,78 @@
 import Foundation
 import SwiftUI
 
+func askPermission() {
+    UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.badge,.sound]) { success, error in
+        if success {
+            print("Access Granted")
+        } else if let error = error{
+            print(error.localizedDescription)
+        }
+    }
+}
 struct Home: View {
-    
-    @State private var showingSheet1 = true
-   var body: some View {
-      //NavigationStack(){
-         
-         Group {
-            ZStack {
-               
-               Image("map")
-                  .resizable()
-                  .frame(width: 400, height: 500, alignment: .top)
-               Circle()
-                  .fill(.white)
-                  .frame(width: 50, height: 50, alignment: .topLeading)
-                  .position(x: 30, y: 65)
-               
-               HStack {
-                  VStack {
-                     Image(systemName: "person.circle")
-                        .resizable()
-                        .scaledToFit()
-                        .padding()
-                        .frame(width: 70, height: 70, alignment: .topLeading)
-                        .position(x: 30, y: 65)
-                  }
-//                  NavigationLink {
-//                     Home()
-//                  } label: {
-//                     Text("Go to Schedule").position(x: 100, y: 100)
-//                  }
-                  Spacer()
-               }
-            }
+   
+   @State var showingSheet1 = true
+    var body: some View {
+        NavigationStack(){
             
-            
-            Button(action: {
-               
-            }, label: {
-            }).sheet(isPresented: $showingSheet1) {
-               Sheet1()
-               .presentationDetents([.height(220), .medium, .large]) }
-            
-         }
-         
-      }
-   //}
+            Group {
+                VStack {
+                    ZStack {
+                        
+                        Image("map")
+                            .resizable()
+                            .frame(maxHeight: .infinity, alignment: .top)
+                        //                     NavigationStack {
+                        NavigationLink {
+                            Profile()
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                .edgesIgnoringSafeArea(.all)
+                        } label: {
+                            Image(systemName: "person.circle")
+                                .resizable()
+                                .scaledToFit()
+                                .padding()
+                                .frame(width: 70, height: 70, alignment: .topLeading)
+                                .position(x: 30, y: 65)
+                        }
+                        if (!showingSheet1) {
+                            Color.white
+                                .ignoresSafeArea()
+                            AddToSchedule()
+                        }
+                        //                         }
+                    }
+                    Button(action: {
+                        
+                    }, label: {
+                        
+                    }).sheet(isPresented: $showingSheet1) {
+                        Sheet1()
+                            .padding()
+                            .presentationDetents([.height(220), .medium, .large])
+                    }
+                    
+                }
+            }.onAppear(perform: askPermission)
+        }
+    }
 }
 
 
 struct Sheet1: View {
-   @State var location = "Naya"
+    @State var location = ""
+    @State var showResults = false
    //This code allows us to call the dismiss() function which closes the sheet view
-   @Environment(\.dismiss) var dismiss
-   
+    @Environment(\.dismiss) var dismiss
+//    if (location.count > 0) {
+//        showResults = true
+//    }
    var body: some View {
-      //NavigationStack(){
+         
+         
          Group {
             VStack {
-               
                TextField("Add a location", text: $location)
                   .multilineTextAlignment(.leading)
                   .frame(maxWidth: 290, alignment: .leading)
@@ -81,6 +93,7 @@ struct Sheet1: View {
                   .padding([.bottom, .top], 3)
                   .background(.gray.opacity(0.2))
                   .cornerRadius(19)
+                  .padding(.top, 10)
                
                Text("Results")
                   .foregroundColor(.black)
@@ -88,25 +101,20 @@ struct Sheet1: View {
                   .padding(3)
                
                //button should lead to results page
-               Button("Naya Resto") {
-                  
-               }
-               .foregroundColor(.black)
-               .padding(.trailing, 200)
+               
+               //               Button("Naya Resto") {
+               //
+               //               }
+               //               .foregroundColor(.black)
+               //               .padding(.trailing, 200)
             }
-            
-//            NavigationLink {
-//               Home()
-//            } label: {
-//               Text("Go to Schedule")
-//            }
-            
             
             Spacer()
             
             HStack {
                Button(action: {
-               },label: {
+                  dismiss()
+               }, label: {
                   Image(systemName: "list.bullet.below.rectangle")
                      .resizable()
                      .frame(width: 45, height: 45, alignment: .bottomLeading)
@@ -119,13 +127,11 @@ struct Sheet1: View {
                      .clipShape(Circle())
                   Spacer()
                })
-               .interactiveDismissDisabled()
-               .padding().foregroundColor(.blue)
+               .padding().foregroundColor(.black)
             }
-            
          }
-      //}
-   }
+      }
+   
 }
 
 struct Home_Previews: PreviewProvider {

@@ -66,17 +66,24 @@ struct Result: View{
            Spacer()
            
            HStack {
-               Image(systemName: "list.bullet.below.rectangle")
-                   .resizable()
-                   .frame(width: 45, height: 45, alignment: .bottomLeading)
-                   .aspectRatio(contentMode: .fill)
-                   .padding(20)
-                   .cornerRadius(50)
-                   .background(.gray.opacity(0.2))
-                   .scaledToFit()
-                   .padding([.leading, .trailing], 30)
-                   .clipShape(Circle())
-               Spacer()
+               NavigationStack {
+                   NavigationLink {
+                       Home()
+                           .frame(maxWidth: .infinity, maxHeight: .infinity)
+                           .edgesIgnoringSafeArea(.all)
+                   } label: {
+                       Image(systemName: "list.bullet.below.rectangle")
+                           .resizable()
+                           .frame(width: 45, height: 45, alignment: .bottomLeading)
+                           .aspectRatio(contentMode: .fill)
+                           .padding(20)
+                           .cornerRadius(50)
+                           .background(.gray.opacity(0.2))
+                           .scaledToFit()
+                           .padding([.leading, .trailing], 30)
+                           .clipShape(Circle())
+                   }
+               }
            }
        }
     }
