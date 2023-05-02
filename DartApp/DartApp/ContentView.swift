@@ -14,9 +14,9 @@ struct ContentView: View {
        
         //SignIn()
        
-        //SignIn()
+        SignIn()
        //Schedule()
-       Home()
+       //Home()
     }
 }
 
