@@ -20,8 +20,10 @@ func askPermission() {
     }
 }
 struct Home: View {
-   
-   @State var showingSheet1 = true
+    @Binding var tripList: [Trip]
+    @State var start : String = "UC Berkeley"
+    @State var location = ""
+    @State var showingSheet1 = true
     var body: some View {
         NavigationStack(){
             
@@ -34,7 +36,7 @@ struct Home: View {
                             .frame(maxHeight: .infinity, alignment: .top)
                         //                     NavigationStack {
                         NavigationLink {
-                            Profile()
+                            Profile(tripList: $tripList)
                                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                                 .edgesIgnoringSafeArea(.all)
                         } label: {
@@ -48,16 +50,15 @@ struct Home: View {
                         if (!showingSheet1) {
                             Color.white
                                 .ignoresSafeArea()
-                            AddToSchedule()
+                            AddToSchedule(tripList: $tripList, startLoc: $start, endLoc: $location)
                         }
-                        //                         }
                     }
                     Button(action: {
                         
                     }, label: {
                         
                     }).sheet(isPresented: $showingSheet1) {
-                        Sheet1()
+                        Sheet1(tripList: $tripList, start: $start, location: $location)
                             .padding()
                             .presentationDetents([.height(220), .medium, .large])
                     }
@@ -70,7 +71,9 @@ struct Home: View {
 
 
 struct Sheet1: View {
-    @State var location = ""
+    @Binding var tripList: [Trip]
+    @Binding var start : String
+    @Binding var location : String
     @State var showResults = false
    //This code allows us to call the dismiss() function which closes the sheet view
     @Environment(\.dismiss) var dismiss
@@ -113,7 +116,8 @@ struct Sheet1: View {
             
             HStack {
                Button(action: {
-                  dismiss()
+                   dismiss();
+                   Schedule(tripList: $tripList)
                }, label: {
                   Image(systemName: "list.bullet.below.rectangle")
                      .resizable()
@@ -135,7 +139,10 @@ struct Sheet1: View {
 }
 
 struct Home_Previews: PreviewProvider {
+    @State static var tlist: [Trip] = []
    static var previews: some View {
-      Home()
+       Home(tripList: $tlist, location: "Union Square")
    }
 }
+
+

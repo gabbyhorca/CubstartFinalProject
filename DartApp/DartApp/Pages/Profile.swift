@@ -9,11 +9,11 @@ import Foundation
 import SwiftUI
 
 struct Profile: View{
-    
+    @Binding var tripList: [Trip]
    var body: some View {
       VStack {
          Button(action: {
-            print("nothing")
+             Home(tripList: $tripList)
          }, label: {
             HStack {
                Image("homeIcon")
@@ -137,7 +137,7 @@ struct Profile: View{
       HStack {
          Spacer()
          Button(action: {
-            print("nothing")
+            SignIn()
          }, label: {
             
             Text("Log Out")
@@ -148,8 +148,9 @@ struct Profile: View{
    }
    
    struct Profile_Previews: PreviewProvider {
+       @State static var tlist: [Trip] = []
       static var previews: some View {
-         Profile()
+          Profile(tripList: $tlist)
       }
    }
 }

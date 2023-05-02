@@ -10,16 +10,14 @@ import SwiftUI
 
 public class Trip : ObservableObject, Identifiable {
     var name : String
-    var time : String
-    var date : String
+    var date : Date
     var trainLine: String
     var tripStart: String
     var tripDestination: String
 //    @State var tripList: [Trip] = []
     
-    init(name: String, time: String, date: String, trainLine: String, tripStart: String, tripDestination: String) {
+    init(name: String, date: Date, trainLine: String, tripStart: String, tripDestination: String) {
         self.name = name
-        self.time = time
         self.date = date
         self.trainLine = trainLine
         self.tripStart = tripStart

@@ -9,18 +9,28 @@ import Foundation
 import SwiftUI
 
 struct AddToSchedule: View{
+    @Binding var tripList: [Trip]
+    @Binding var startLoc: String
+    @Binding var endLoc: String
     @State var name = ""
     @State var date = Date()
-    @State var time = ""
+    @State var trainLine = ""
+    @State var tripStart = ""
+    @State var tripDestination = ""
     @State private var showingSheet2 = true
-    @StateObject var newtrip : Trip = Trip(name: "", time: "", date: "", trainLine: "Red", tripStart: "Downtown Berkeley", tripDestination: "Embarcadero")
+    @StateObject var newtrip : Trip = Trip(name: "", date: Date(), trainLine: "Red", tripStart: "Downtown Berkeley", tripDestination: "Embarcadero")
+    
+    func addTrip(name: String, date: Date, trainLine: String, tripStart: String, tripDestination: String) {
+        var tempTrip = Trip(name: name, date: date, trainLine: trainLine, tripStart: tripStart, tripDestination: tripDestination)
+        tripList.append(tempTrip)
+    }
     
     var body: some View {
         VStack {
             HStack {
                 NavigationStack {
                     NavigationLink {
-                        Home()
+                        Home(tripList : $tripList, location: endLoc)
                             .frame(maxWidth: .infinity, maxHeight: .infinity)
                             .edgesIgnoringSafeArea(.all)
                     } label: {
@@ -118,6 +128,10 @@ struct AddToSchedule: View{
             
             ZStack {
                 Button{
+                action: do{
+                    addTrip(name: name, date: date, trainLine: "red", tripStart: startLoc, tripDestination: endLoc);
+                    print(tripList[0].name)}
+                    Home(tripList: $tripList)
                     // I'm trying to create an instance of a trip, then add that new trip to the tripList
                     
 //                    print("Added to Schedule")
@@ -141,6 +155,8 @@ struct AddToSchedule: View{
     }
 }
 struct Sheet2: View {
+    @Binding var tripList: [Trip]
+    
     @State var location = ""
     @State var showResults = false
     //This code allows us to call the dismiss() function which closes the sheet view
@@ -149,14 +165,17 @@ struct Sheet2: View {
     //        showResults = true
     //    }
     var body: some View {
-        Home()
+        Home(tripList : $tripList, location: location)
             .interactiveDismissDisabled()
             .padding().foregroundColor(.black)
     }
 }
 
 struct AddToSchedule_Previews: PreviewProvider {
-    static var previews: some View {
-        AddToSchedule()
-    }
+    @State static var tlist: [Trip] = []
+    @State static var sLoc : String = ""
+    @State static var eLoc: String = ""
+   static var previews: some View {
+       AddToSchedule(tripList: $tlist, startLoc: $sLoc, endLoc: $eLoc, trainLine: "red")
+   }
 }

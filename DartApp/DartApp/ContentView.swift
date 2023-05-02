@@ -9,12 +9,12 @@ import SwiftUI
 
 struct ContentView: View {
     //@State private var presentedViews: [any View] = []
+    @State var tlist : [Trip] = []
     
     var body: some View {
        
-        SignIn()
-       
         //SignIn()
+        Home(tripList: $tlist)
     }
 }
 

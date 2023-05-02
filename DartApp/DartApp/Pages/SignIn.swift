@@ -12,6 +12,8 @@ import FirebaseCore
 import FirebaseAuth
 
 struct SignIn: View {
+    @State var tripList: [Trip] = []
+    
     @State var testemail = "test@gmail.com"
     @State var testpassword = "12345#"
     @State var email = ""
@@ -33,6 +35,7 @@ struct SignIn: View {
                 //                TODO: update the variable to track that the user has successfully logged in
                 loggedIn = true;
                 print("success")
+                Home(tripList : $tripList)
             }
         }
     }
@@ -52,7 +55,7 @@ struct SignIn: View {
     
     var body: some View {
         if (loggedIn) {
-            Home()
+            Home(tripList : $tripList)
         }
         
        VStack {
@@ -129,7 +132,7 @@ struct SignIn: View {
 }
 
 struct SignIn_Previews: PreviewProvider {
-    static var previews: some View {
-        SignIn()
-    }
+   static var previews: some View {
+       SignIn()
+   }
 }

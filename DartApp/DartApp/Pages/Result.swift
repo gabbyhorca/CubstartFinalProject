@@ -9,6 +9,8 @@ import Foundation
 import SwiftUI
 
 struct Result: View{
+    @Binding var tripList: [Trip]
+    
     @State var location = ""
     @State var add = false
     var body: some View {
@@ -68,7 +70,7 @@ struct Result: View{
            HStack {
                NavigationStack {
                    NavigationLink {
-                       Home()
+                       Home(tripList: $tripList)
                            .frame(maxWidth: .infinity, maxHeight: .infinity)
                            .edgesIgnoringSafeArea(.all)
                    } label: {
@@ -89,7 +91,8 @@ struct Result: View{
     }
 }
 struct Result_Previews: PreviewProvider {
-   static var previews: some View {
-      Result()
-   }
+    @State static var tlist: [Trip] = []
+    static var previews: some View {
+        Result(tripList: $tlist)
+    }
 }
