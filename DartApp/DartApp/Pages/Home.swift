@@ -21,7 +21,11 @@ func askPermission() {
     }
 }
 struct Home: View {
-   @State var showingSheet1 = true
+    @Binding var tripList: [Trip]
+    @State var start : String = "UC Berkeley"
+    @State var location = ""
+    @State var showingSheet1 = true
+    
     var body: some View {
         NavigationStack(){
             
@@ -34,7 +38,7 @@ struct Home: View {
                             .frame(maxHeight: .infinity, alignment: .top)
                         //                     NavigationStack {
                         NavigationLink {
-                            Profile()
+                            Profile(tripList: $tripList)
                                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                                 .edgesIgnoringSafeArea(.all)
                         } label: {
@@ -44,36 +48,49 @@ struct Home: View {
                                 .padding()
                                 .frame(width: 70, height: 70, alignment: .topLeading)
                                 .position(x: 30, y: 65)
+                            //                        }
+                            //<<<<<<< HEAD
+                            //                        if (!showingSheet1) {
+                            //                            Color.white
+                            //                                .ignoresSafeArea()
+                            //                            AddToSchedule(tripList: $tripList, startLoc: $start, endLoc: $location)
+                            //                        }
+                            //=======
+                            //                         }
+                            //>>>>>>> 2ab9df59fc74075a46049da4a2c98bf4ce55e451
                         }
-                        //                         }
-                    }
-                    Button(action: {
-                       showingSheet1 = false
-                    }, label: {
+                        Button(action: {
+                            showingSheet1 = false
+                        }, label: {
+                            
+                        }).sheet(isPresented: $showingSheet1) {
+                            Sheet1(tripList: $tripList, start: $start, location: $location)
+                                .padding()
+                                .presentationDetents([.height(220), .medium, .large])
+                        }
+                        if (!showingSheet1) {
+                            Color.white
+                                .ignoresSafeArea()
+                           Schedule(tripList: $tripList)
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                .edgesIgnoringSafeArea(.all)
+                        }
                         
-                    }).sheet(isPresented: $showingSheet1) {
-                        Sheet1()
-                            .padding()
-                            .presentationDetents([.height(220), .medium, .large])
                     }
-                   if (!showingSheet1) {
-                       Color.white
-                           .ignoresSafeArea()
-                       Schedule()
-                         .frame(maxWidth: .infinity, maxHeight: .infinity)
-                         .edgesIgnoringSafeArea(.all)
-                   }
-                    
-                }
-            }.onAppear(perform: askPermission)
+                }.onAppear(perform: askPermission)
+            }
         }
     }
 }
 
 
 struct Sheet1: View {
-   @State var location = ""
-   @State var showResults = false
+
+    @Binding var tripList: [Trip]
+    @Binding var start : String
+    @Binding var location : String
+    @State var showResults = false
+
    
    //This code allows us to call the dismiss() function which closes the sheet view
    @Environment(\.dismiss) var dismiss
@@ -102,7 +119,7 @@ struct Sheet1: View {
                      .foregroundColor(.black)
                      .padding(3)
                   NavigationLink {
-                     AddToSchedule()
+                     AddToSchedule(tripList: $tripList, startLoc: $start, endLoc: $location)
                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                        .edgesIgnoringSafeArea(.all)
                   } label: {
@@ -124,7 +141,8 @@ struct Sheet1: View {
             
             HStack {
                Button(action: {
-                  dismiss()
+                   dismiss();
+                  Schedule(tripList: $tripList)
                }, label: {
                   Image(systemName: "list.bullet.below.rectangle")
                      .resizable()
@@ -145,9 +163,14 @@ struct Sheet1: View {
       
    }
    
-   struct Home_Previews: PreviewProvider {
-      static var previews: some View {
-         Home()
-      }
-   }
+
 }
+
+struct Home_Previews: PreviewProvider {
+    @State static var tlist: [Trip] = []
+    static var previews: some View {
+        Home(tripList: $tlist, location: "Union Square")
+    }
+}
+
+

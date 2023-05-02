@@ -9,7 +9,8 @@ import Foundation
 import SwiftUI
 
 struct TestingPage: View {
-   
+    @Binding var tripList: [Trip]
+    
    var body: some View {
       
       VStack {
@@ -29,7 +30,8 @@ struct TestingPage: View {
 }
 
 struct TestingPage_Previews: PreviewProvider {
-   static var previews: some View {
-      TestingPage()
-   }
+    @State static var tlist: [Trip] = []
+    static var previews: some View {
+        Result(tripList: $tlist)
+    }
 }

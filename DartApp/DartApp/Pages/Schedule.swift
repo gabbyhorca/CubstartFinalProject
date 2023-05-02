@@ -11,10 +11,10 @@ import SwiftUI
 
 struct Schedule: View {
     
-    @State var tripList: [Trip] = []
+    @Binding var tripList: [Trip]
     
-    @StateObject var dummyt1 : Trip = Trip(name: "Test Trip 1", time: "3:00", date: "5/11/23", trainLine: "Red", tripStart: "Downtown Berkeley", tripDestination: "Embarcadero")
-    @StateObject var dummyt2 : Trip = Trip(name: "Test Trip 2", time: "5:00", date: "5/12/23", trainLine: "Blue", tripStart: "Downtown Berkeley", tripDestination: "Ashby")
+    @StateObject var dummyt1 : Trip = Trip(name: "Test Trip 1", date: Date(), trainLine: "Red", tripStart: "Downtown Berkeley", tripDestination: "Embarcadero")
+    @StateObject var dummyt2 : Trip = Trip(name: "Test Trip 2", date: Date(), trainLine: "Blue", tripStart: "Downtown Berkeley", tripDestination: "Ashby")
     
     func addTripListItems() {
         tripList = [dummyt1, dummyt2]
@@ -29,14 +29,14 @@ struct Schedule: View {
             VStack {
                 HStack{
                     NavigationLink {
-                        Home()
+                        Home(tripList: $tripList)
                     } label: {
                         Button(action: {
                             
                         }, label: {
                             HStack {
                                NavigationLink {
-                                   Home()
+                                   Home(tripList: $tripList)
                                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                                        .edgesIgnoringSafeArea(.all)
                                } label: {
@@ -72,21 +72,13 @@ struct Schedule: View {
                             ForEach(tripList) {i in
                                 VStack{
                                     HStack{
-                                        Text(i.date)
+                                        Text(i.date.description)
                                             .font(.system(size: 15, weight: .light, design: .default))
                                         Text(i.name)
                                         Spacer()
                                         Button("Edit"){
                                             
                                         }.frame(maxWidth: .infinity, alignment: .trailing)
-                                        Spacer()
-                                    }
-                                    HStack {
-                                        
-                                        Text(i.time)
-                                        Text(i.tripStart)
-                                        Text(" - ")
-                                        Text(i.tripDestination)
                                         Spacer()
                                     }
                                     Color
@@ -107,7 +99,8 @@ struct Schedule: View {
 }
 
 struct Schedule_Previews: PreviewProvider {
+    @State static var tlist: [Trip] = []
     static var previews: some View {
-        Schedule()
+        Schedule(tripList: $tlist)
     }
 }

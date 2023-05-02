@@ -12,6 +12,8 @@ import FirebaseCore
 import FirebaseAuth
 
 struct SignIn: View {
+    @State var tripList: [Trip] = []
+    
     @State var testemail = "test@gmail.com"
     @State var testpassword = "12345#"
     @State var email = ""
@@ -33,6 +35,17 @@ struct SignIn: View {
                 //                TODO: update the variable to track that the user has successfully logged in
                 loggedIn = true;
                 print("success")
+//               NavigationView {
+//                  NavigationLink(destination: Home(tripList: $tripList)) {
+//                     Text("Do Something")
+//                  }
+//               }
+
+               
+               
+//                Color.white
+//                    .ignoresSafeArea()
+//                Home(tripList : $tripList)
             }
         }
     }
@@ -50,24 +63,25 @@ struct SignIn: View {
                         }
                     }
     
-    var body: some View {
-        if (loggedIn) {
-            Home()
-        }
-        
-       VStack {
-           Image("bart lines")
+   var body: some View {
+      //        if (loggedIn) {
+      //            Home(tripList : $tripList)
+      //        }
+      Group {
+         
+         VStack {
+            Image("bart lines")
                .resizable()
                .scaledToFit()
                .frame(width: 400, height: 400, alignment: .top)
                .aspectRatio(1.0, contentMode: .fit)
-           
-           Text("Username")
+            
+            Text("Username")
                .multilineTextAlignment(.leading)
                .font(.system(size: 19))
                .frame(maxWidth: 300, alignment: .leading)
-           
-           TextField("Email", text: $email)
+            
+            TextField("Email", text: $email)
                .multilineTextAlignment(.leading)
                .textFieldStyle(.roundedBorder)
                .textFieldStyle(PlainTextFieldStyle())
@@ -76,60 +90,72 @@ struct SignIn: View {
                .disableAutocorrection(true)
                .autocapitalization(.none)
                .frame(height: 40)
-           
-
-           Text("Password")
+            
+            
+            Text("Password")
                .multilineTextAlignment(.leading)
                .font(.system(size: 19))
                .frame(maxWidth: 300, alignment: .leading)
-           
-           HStack {
+            
+            HStack {
                SecureField("Password", text: $password)
-                   .multilineTextAlignment(.leading)
-                   .textFieldStyle(.roundedBorder)
-                   .textFieldStyle(PlainTextFieldStyle())
-                   .padding([.horizontal], 4)
-                   .frame(maxWidth: 300, alignment: .leading)
-                   .disableAutocorrection(true)
-                   .autocapitalization(.none)
+                  .multilineTextAlignment(.leading)
+                  .textFieldStyle(.roundedBorder)
+                  .textFieldStyle(PlainTextFieldStyle())
+                  .padding([.horizontal], 4)
+                  .frame(maxWidth: 300, alignment: .leading)
+                  .disableAutocorrection(true)
+                  .autocapitalization(.none)
                
-           }
-           Button("Forgot Password?") {
+            }
+            Button("Forgot Password?") {
                forgotPassword.toggle()
-           }
-           .toggleStyle(.automatic)
-           .foregroundColor(.blue)
-           .frame(maxWidth: 300, alignment: .trailing)
-           .font(.system(size: 13))
-           
-           
-           HStack {
+            }
+            .toggleStyle(.automatic)
+            .foregroundColor(.blue)
+            .frame(maxWidth: 300, alignment: .trailing)
+            .font(.system(size: 13))
+            
+            
+            HStack {
                Button(action: {login()}) {
-                   Text("Log in")
+                  Text("Log in")
+                  
                }
                .frame(height: 100, alignment: .center)
                .buttonStyle(.bordered).tint(.blue)
                .toggleStyle(.button)
                .font(.system(size: 21))
-
+               
                Image(systemName: "arrow.right")
-           }
-           
-           
-           HStack {
+            }
+            
+            
+            HStack {
                Text("Don't have an account?")
                Button(action : {createAcct()}) {
-                   Text("Sign Up with Entered Credentials")
+                  Text("Sign Up with Entered Credentials")
                }
-           }
-           
-           Spacer()
-       }
-    }
+            }
+            
+            Spacer()
+         }
+         
+      }
+      if (loggedIn) {
+         NavigationView {
+            NavigationLink(destination: Home(tripList: $tripList)) {
+               Home(tripList: $tripList)
+            }
+         }
+      }
+   }
+   
 }
 
 struct SignIn_Previews: PreviewProvider {
-    static var previews: some View {
-        SignIn()
-    }
+   static var previews: some View {
+       SignIn()
+      
+   }
 }
