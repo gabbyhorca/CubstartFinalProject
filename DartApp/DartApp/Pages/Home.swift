@@ -45,15 +45,10 @@ struct Home: View {
                                 .frame(width: 70, height: 70, alignment: .topLeading)
                                 .position(x: 30, y: 65)
                         }
-                        if (!showingSheet1) {
-                            Color.white
-                                .ignoresSafeArea()
-                            AddToSchedule()
-                        }
                         //                         }
                     }
                     Button(action: {
-                        
+                       showingSheet1 = false
                     }, label: {
                         
                     }).sheet(isPresented: $showingSheet1) {
@@ -61,6 +56,11 @@ struct Home: View {
                             .padding()
                             .presentationDetents([.height(220), .medium, .large])
                     }
+                   if (!showingSheet1) {
+                       Color.white
+                           .ignoresSafeArea()
+                       AddToSchedule()
+                   }
                     
                 }
             }.onAppear(perform: askPermission)

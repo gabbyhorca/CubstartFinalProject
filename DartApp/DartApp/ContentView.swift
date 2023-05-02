@@ -12,9 +12,10 @@ struct ContentView: View {
     
     var body: some View {
        
-        SignIn()
+        //SignIn()
        
         //SignIn()
+       Home()
     }
 }
 
